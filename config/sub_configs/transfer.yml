@@ -1,0 +1,20 @@
+# tuning parameters
+# all combinations of parameters will be tried
+
+# list of number of epochs to try
+"epochs": [5000]
+
+# list of alphas to try
+# alpha is the weight for content loss
+"alpha": [1]
+
+# list of betas to try
+# beta is the weight for style loss
+"beta": [10000]
+
+# list of learning rates to try
+"learning_rate": [0.01]
+
+# list of pooling types to try
+# original paper affirm that average pooling gives better results than max
+"pooling_type": ["average"]

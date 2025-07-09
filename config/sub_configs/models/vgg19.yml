@@ -1,0 +1,73 @@
+# model name to select
+model_name: vgg19
+
+# map layers human-readable names to layer names in model
+layer_mapping:
+  "conv_1_1": "0"
+  "conv_1_2": "2"
+  "conv_2_1": "5"
+  "conv_2_2": "7"
+  "conv_3_1": "10"
+  "conv_3_2": "12"
+  "conv_3_3": "14"
+  "conv_3_4": "16"
+  "conv_4_1": "19"
+  "conv_4_2": "21"
+  "conv_4_3": "23"
+  "conv_4_4": "25"
+  "conv_5_1": "28"
+  "conv_5_2": "30"
+  "conv_5_3": "32"
+  "conv_5_4": "34"
+  "pooling_1": "4"
+  "pooling_2": "9"
+  "pooling_3": "18"
+  "pooling_4": "27"
+  "pooling_5": "36"
+
+# layers human-readable names to select
+# it select a deep conv layer for content loss
+# deep layer should be in target_layers list to compare content loss
+# on the same layer
+content_layers:
+  - "conv_4_2"
+
+# layers human-readable names to select
+# it select convs layers to compute style loss on each (style image)
+# target_layers and style_layers should be the same to compare style loss
+# on the same layers
+style_layers:
+  - "conv_1_1"
+  - "conv_2_1"
+  - "conv_3_1"
+  - "conv_4_1"
+  - "conv_5_1"
+
+# layers human-readable names to select
+# it select convs layers to compute style loss on each (generated image)
+# target_layers and style_layers should be the same to compare style loss
+# on the same layers
+target_layers:
+  - "conv_1_1"
+  - "conv_2_1"
+  - "conv_3_1"
+  - "conv_4_1"
+  - "conv_4_2"
+  - "conv_5_1"
+
+# layers human-readable names to select
+# pooling layers selection is used to replace pooling type
+pooling_layers:
+  - "pooling_1"
+  - "pooling_2"
+  - "pooling_3"
+  - "pooling_4"
+  - "pooling_5"
+
+# style weights to apply on style loss of each layer
+style_weights:
+  "conv_1_1": 0.244140625
+  "conv_2_1": 0.061035156
+  "conv_3_1": 0.015258789
+  "conv_4_1": 0.003814697
+  "conv_5_1": 0.003814697

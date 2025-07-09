@@ -1,0 +1,12 @@
+# dataset root path
+path_dataset:
+  content: "./dataset/content_dataset/"
+  style: "./dataset/style_dataset/"
+
+# add as much list entry as you want such as:
+# - content: "file.png"
+#   style: ["file1.png", "file2.jpg", "file3.jpg"]
+# where the content file will be tried with all style files
+dataset_experiments:
+  - content: "content_file.png"
+    style: ["style_file.png"]

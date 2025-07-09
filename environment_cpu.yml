@@ -1,0 +1,14 @@
+name: style_transfer_cpu
+dependencies:
+  - anaconda::python==3.10.16
+  - anaconda::pip==25.1
+  - anaconda::ipykernel==6.29.5
+  - anaconda::ipywidgets==8.1.5
+  - anaconda::matplotlib==3.10.0
+  - anaconda::numpy==1.26.4
+  - anaconda::pyyaml==6.0.2
+  - anaconda::tqdm==4.67.1
+  - conda-forge::torchmetrics==1.5.2
+  - pytorch::cpuonly==2.0
+  - pytorch::pytorch==1.13.0
+  - pytorch::torchvision==0.14.0

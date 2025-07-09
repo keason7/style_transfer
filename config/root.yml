@@ -1,0 +1,6 @@
+# sub configs path
+paths_configs:
+  dataset: ./config/sub_configs/dataset.yml
+  model: ./config/sub_configs/models/vgg19.yml
+  transfer: ./config/sub_configs/transfer.yml
+  transforms: ./config/sub_configs/transforms.yml
