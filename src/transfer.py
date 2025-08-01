@@ -216,14 +216,6 @@ def style_transfer(
         # optimization step on target image
         optimizer.step()
 
-        path_target_on_training = Path(path_run) / "target_on_training.png"
-        save_image(
-            path_target_on_training,
-            current_images["target"].data[0].detach().clone().cpu(),
-            current_sizes["target"],
-            normalization,
-        )
-
 
 def style_transfer_loop(device, params, images, sizes):
     """Run a style transfer experiment with run(s) trying all combinations of hyperparameters.
