@@ -9,7 +9,7 @@ import torch.optim as optim
 from tqdm import tqdm
 
 from src.models import load_model
-from src.utils import get_timestamp, save_image, save_run
+from src.utils import get_timestamp, save_run
 
 
 def get_device():
@@ -125,16 +125,13 @@ def get_style_loss(style_gram, target_gram, layer_weight):
 
 def style_transfer(
     epochs,
-    path_run,
     current_images,
-    current_sizes,
     model,
     layer_mapping,
     content_layers,
     style_layers,
     target_layers,
     style_weights,
-    normalization,
     learning_rate,
     alpha,
     beta,
@@ -143,16 +140,13 @@ def style_transfer(
 
     Args:
         epochs (int): Number of training epochs.
-        path_run(pathlib.Path): Run directory path.
         current_images (dict): Dictionary of images (content, style and target).
-        current_sizes (dict): Dictionary of sizes (content, style and target).
         model (torch.nn.Module): Input model.
         layer_mapping (dict): Layer mapping dictionary such as: {"layer_1": "0", "layer_2": "1", ...}.
         content_layers (list): List of layers to select.
         style_layers (list): List of layers to select.
         target_layers (list): List of layers to select.
         style_weights (dict): Dictionary mapping layers to style weight values.
-        normalization (dict): Normalization coefficients.
         learning_rate (float): Learning rate for target optimization.
         alpha (float): Weight for content loss.
         beta (float): Weight for style loss.
@@ -279,16 +273,13 @@ def style_transfer_loop(device, params, images, sizes):
             # optimize target image
             style_transfer(
                 epochs,
-                path_run,
                 current_images,
-                current_sizes,
                 model,
                 params["layer_mapping"],
                 params["content_layers"],
                 params["style_layers"],
                 params["target_layers"],
                 params["style_weights"],
-                params["normalize"],
                 learning_rate,
                 alpha,
                 beta,
