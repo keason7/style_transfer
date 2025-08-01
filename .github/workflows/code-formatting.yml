@@ -1,0 +1,38 @@
+name: Code formatting checks
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  code-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Miniconda
+        uses: conda-incubator/setup-miniconda@v3
+        with:
+          auto-update-conda: true
+          python-version: 3.10.16
+          environment-file: environment_cpu.yml
+          activate-environment: style_transfer_cpu
+          auto-activate-base: false
+
+      - name: Install code checks
+        run: |
+          pip install flake8 isort black
+
+      - name: Check line length with flake8
+        run: |
+          flake8 . --max-line-length=120
+
+      - name: Check import order with isort
+        run: |
+          isort . --check-only --diff --line-length 120
+
+      - name: Check code formatting with black
+        run: |
+          black . --check --diff --line-length 120
